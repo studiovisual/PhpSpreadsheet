@@ -485,7 +485,7 @@ class BaseDrawing implements IComparable
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->name .
             $this->description .
             $this->worksheet->getHashCode() .
@@ -496,7 +496,8 @@ class BaseDrawing implements IComparable
             $this->height .
             $this->rotation .
             $this->shadow->getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

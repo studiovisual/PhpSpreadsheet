@@ -63,9 +63,10 @@ class TextElement implements ITextElement
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->text .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

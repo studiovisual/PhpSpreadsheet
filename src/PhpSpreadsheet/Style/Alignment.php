@@ -448,7 +448,7 @@ class Alignment extends Supervisor
             return $this->getSharedComponent()->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->horizontal .
             $this->vertical .
             $this->textRotation .
@@ -456,7 +456,8 @@ class Alignment extends Supervisor
             ($this->shrinkToFit ? 't' : 'f') .
             $this->indent .
             $this->readOrder .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

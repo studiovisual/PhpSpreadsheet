@@ -288,7 +288,7 @@ class Comment implements IComparable
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->author .
             $this->text->getHashCode() .
             $this->width .
@@ -298,7 +298,8 @@ class Comment implements IComparable
             ($this->visible ? 1 : 0) .
             $this->fillColor->getHashCode() .
             $this->alignment .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

@@ -2662,7 +2662,7 @@ class Worksheet implements IComparable
     public function getHashCode()
     {
         if ($this->dirty) {
-            $this->hash = md5($this->title . $this->autoFilter . ($this->protection->isProtectionEnabled() ? 't' : 'f') . __CLASS__);
+            $this->hash = password_hash($this->title . $this->autoFilter . ($this->protection->isProtectionEnabled() ? 't' : 'f') . __CLASS__, PASSWORD_DEFAULT);
             $this->dirty = false;
         }
 

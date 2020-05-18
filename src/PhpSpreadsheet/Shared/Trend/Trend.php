@@ -63,7 +63,7 @@ class Trend
             trigger_error('Trend(): Number of elements in coordinate arrays do not match.', E_USER_ERROR);
         }
 
-        $key = md5($trendType . $const . serialize($yValues) . serialize($xValues));
+        $key = password_hash($trendType . $const . serialize($yValues) . serialize($xValues), PASSWORD_DEFAULT);
         //    Determine which Trend method has been requested
         switch ($trendType) {
             //    Instantiate and return the class for the requested Trend method

@@ -382,10 +382,11 @@ class NumberFormat extends Supervisor
             return $this->getSharedComponent()->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->formatCode .
             $this->builtInFormatCode .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

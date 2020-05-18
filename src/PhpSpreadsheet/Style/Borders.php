@@ -398,14 +398,15 @@ class Borders extends Supervisor
             return $this->getSharedComponent()->getHashcode();
         }
 
-        return md5(
+        return password_hash(
             $this->getLeft()->getHashCode() .
             $this->getRight()->getHashCode() .
             $this->getTop()->getHashCode() .
             $this->getBottom()->getHashCode() .
             $this->getDiagonal()->getHashCode() .
             $this->getDiagonalDirection() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

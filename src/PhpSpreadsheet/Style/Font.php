@@ -532,7 +532,7 @@ class Font extends Supervisor
             return $this->getSharedComponent()->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->name .
             $this->size .
             ($this->bold ? 't' : 'f') .
@@ -542,7 +542,8 @@ class Font extends Supervisor
             $this->underline .
             ($this->strikethrough ? 't' : 'f') .
             $this->color->getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

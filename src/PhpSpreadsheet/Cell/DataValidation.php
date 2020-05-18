@@ -446,7 +446,7 @@ class DataValidation
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->formula1 .
             $this->formula2 .
             $this->type .
@@ -460,7 +460,8 @@ class DataValidation
             $this->error .
             $this->promptTitle .
             $this->prompt .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

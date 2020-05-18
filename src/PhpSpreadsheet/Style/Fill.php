@@ -303,12 +303,13 @@ class Fill extends Supervisor
         }
         // Note that we don't care about colours for fill type NONE, but could have duplicate NONEs with
         //  different hashes if we don't explicitly prevent this
-        return md5(
+        return password_hash(
             $this->getFillType() .
             $this->getRotation() .
             ($this->getFillType() !== self::FILL_NONE ? $this->getStartColor()->getHashCode() : '') .
             ($this->getFillType() !== self::FILL_NONE ? $this->getEndColor()->getHashCode() : '') .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

@@ -260,7 +260,7 @@ class Shadow implements IComparable
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             ($this->visible ? 't' : 'f') .
             $this->blurRadius .
             $this->distance .
@@ -268,7 +268,8 @@ class Shadow implements IComparable
             $this->alignment .
             $this->color->getHashCode() .
             $this->alpha .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

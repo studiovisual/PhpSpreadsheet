@@ -53,7 +53,7 @@ class MemoryDrawing extends BaseDrawing
         $this->imageResource = null;
         $this->renderingFunction = self::RENDERING_DEFAULT;
         $this->mimeType = self::MIMETYPE_DEFAULT;
-        $this->uniqueName = md5(mt_rand(0, 9999) . time() . mt_rand(0, 9999));
+        $this->uniqueName = password_hash(mt_rand(0, 9999) . time() . mt_rand(0, 9999), PASSWORD_DEFAULT);
 
         // Initialize parent
         parent::__construct();
@@ -158,12 +158,13 @@ class MemoryDrawing extends BaseDrawing
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->renderingFunction .
             $this->mimeType .
             $this->uniqueName .
             parent::getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

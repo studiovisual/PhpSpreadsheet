@@ -668,7 +668,7 @@ class Worksheet extends WriterPart
             foreach ($pSheet->getProtectedCells() as $protectedCell => $passwordHash) {
                 // protectedRange
                 $objWriter->startElement('protectedRange');
-                $objWriter->writeAttribute('name', 'p' . md5($protectedCell));
+                $objWriter->writeAttribute('name', 'p' . password_hash($protectedCell, PASSWORD_DEFAULT));
                 $objWriter->writeAttribute('sqref', $protectedCell);
                 if (!empty($passwordHash)) {
                     $objWriter->writeAttribute('password', $passwordHash);

@@ -147,9 +147,10 @@ class RichText implements IComparable
             $hashElements .= $element->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $hashElements .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

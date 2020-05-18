@@ -104,10 +104,11 @@ class Hyperlink
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->url .
             $this->tooltip .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

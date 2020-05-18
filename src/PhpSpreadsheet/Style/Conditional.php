@@ -248,12 +248,13 @@ class Conditional implements IComparable
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->conditionType .
             $this->operatorType .
             implode(';', $this->condition) .
             $this->style->getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

@@ -222,10 +222,11 @@ class Border extends Supervisor
             return $this->getSharedComponent()->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->borderStyle .
             $this->color->getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

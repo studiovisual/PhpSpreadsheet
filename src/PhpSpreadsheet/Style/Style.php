@@ -604,7 +604,7 @@ class Style extends Supervisor
             $hashConditionals .= $conditional->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->fill->getHashCode() .
             $this->font->getHashCode() .
             $this->borders->getHashCode() .
@@ -613,7 +613,8 @@ class Style extends Supervisor
             $hashConditionals .
             $this->protection->getHashCode() .
             ($this->quotePrefix ? 't' : 'f') .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 

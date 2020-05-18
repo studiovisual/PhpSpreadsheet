@@ -399,9 +399,10 @@ class Color extends Supervisor
             return $this->getSharedComponent()->getHashCode();
         }
 
-        return md5(
+        return password_hash(
             $this->argb .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }

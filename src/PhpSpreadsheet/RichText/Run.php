@@ -56,10 +56,11 @@ class Run extends TextElement implements ITextElement
      */
     public function getHashCode()
     {
-        return md5(
+        return password_hash(
             $this->getText() .
             $this->font->getHashCode() .
-            __CLASS__
+            __CLASS__,
+            PASSWORD_DEFAULT
         );
     }
 }
