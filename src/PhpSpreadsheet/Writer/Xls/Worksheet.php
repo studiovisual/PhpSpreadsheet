@@ -1607,7 +1607,7 @@ class Worksheet extends BIFFwriter
                 hexdec($password)
             );
 
-            $recordData .= StringHelper::UTF8toBIFF8UnicodeLong('p' . md5($recordData));
+            $recordData .= StringHelper::UTF8toBIFF8UnicodeLong('p' . password_hash($recordData, PASSWORD_DEFAULT)); 
 
             $length = strlen($recordData);
 
